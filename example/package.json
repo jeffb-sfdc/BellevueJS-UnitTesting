@@ -1,5 +1,10 @@
 {
 	"scripts": {
-		"test": "jest"
+		"test": "jest",
+
+		"jest": "jest",
+		"jestdebug": "node --inspect node_modules/.bin/jest --runInBand",
+		"jestwatch": "jest --watchAll",
+		"jestcoverage": "jest --coverage"
 	}
 }
