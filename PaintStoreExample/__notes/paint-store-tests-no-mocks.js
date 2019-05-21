@@ -3,13 +3,13 @@ import { fail } from 'assert';
 
 
 describe('PaintStore component', () => {
-
-
 	/*
 	it('simple0', done => {
 		done.fail('This is the error');
 	});
+	*/
 
+	/*
 	it('simple1', () => {
 		const paintStore = new PaintStore();
 		return paintStore.newTest1()
@@ -52,7 +52,7 @@ describe('PaintStore component', () => {
 			})
 	})
 
-	it('validates that initialOrderId is null when purchasePaint() is called', () => {
+	it('validates that initialOrderId is null when purchaseMorePaint() is called', () => {
 		debugger;
 
 		const previousOrderId = 305;
