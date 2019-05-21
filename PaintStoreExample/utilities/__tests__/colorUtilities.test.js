@@ -14,8 +14,8 @@ describe('ColorUtilities library', () => {
 		const cmykColor = rbgToCmyk(rgbColor);
 
 		// Assert
-		//expect(cmykColor).toBe({
 		expect(cmykColor).toEqual({
+		//expect(cmykColor).toBe({
 			c: 0,
 			m: 0,
 			y: 0,
