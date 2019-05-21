@@ -19,16 +19,19 @@ export default class PaintStore {
 
 	newTest2() {
 		return new Promise((resolve, reject) => {
-			throw new Error(`don't do that`);
+			//throw new Error(`don't do that`);
 			//throw `don't do that`;
-			//resolve();
+			resolve();
 		});
 	}
 
 	purchasePaint(customerId, rgb, quantity) {
 		return new Promise((resolve, reject) => {
-			if(!customerId || !rgb || !quantity)
-				throw new Error('...');
+			if(!customerId || !rgb || !quantity) {
+				throw new Error('Error in purchasePaint() - bad parameters');
+				//throw 'Error in purchasePaint() - bad parameters';
+				//reject('Error in purchasePaint() - bad parameters');
+			}
 
 			const cmyk = rbgToCmyk(rgb);
 			const cansOfPaint = this.makePaint(cmyk, quantity);
@@ -52,8 +55,11 @@ export default class PaintStore {
 
 	purchaseMorePaint(customerId, previousOrderId, quantity) {
 		return new Promise((resolve, reject) => {
-			if(!customerId || !previousOrderId || !quantity)
-				throw new Error('...');
+			if(!customerId || !previousOrderId || !quantity) {
+				throw new Error('Error in purchaseMorePaint() - bad parameters');
+				//throw 'Error in purchaseMorePaint() - bad parameters';
+				//reject('Error in purchaseMorePaint() - bad parameters');
+			}
 
 			let cansOfPaint = undefined;
 			const orderService = new OrderService();
@@ -98,54 +104,6 @@ export default class PaintStore {
 
 		return cans;
 	}
-
-
-
-	// chargeCustomer(customerId, rgb, quantity) {
-	// 	return new Promise((resolve, reject) => {
-	// 		const customerService = new CustomerService();
-	// 		customerService.getCustomer(customerId)
-	// 			.then(result => {
-	// 				const customer = result;
-
-	// 				const inventoryService = new InventoryService();
-	// 				inventoryService.calculateCost(quantity)
-	// 					.then(result => {
-	// 						const cost = result;
-		
-	// 						const taxService = new TaxService();
-	// 						taxService.calculateTax(cost, customer.State)
-	// 							.then(result => {
-	// 								const tax = result;
-
-	// 								// const totalCost = cost + tax;
-	// 								const totalCost = parseFloat((cost + tax).toFixed(2));
-						
-	// 								const paymentService = new PaymentService();
-	// 								paymentService.chargePayment(totalCost)
-	// 									.then(result => {
-	// 										const paymentTransactionId = result;
-
-	// 										const orderService = new OrderService();
-	// 										orderService.placeOrder(
-	// 											customerId,
-	// 											rgb,
-	// 											quantity,
-	// 											totalCost,
-	// 											paymentTransactionId
-	// 										)
-	// 										.then(result => {
-	// 											const order = result;
-
-	// 											resolve(order);
-	// 										})
-	// 									});
-	// 							});
-	// 					});
-	// 			});
-	// 	});
-	// }
-
 
 	chargeCustomer(customerId, rgb, quantity) {
 		return new Promise((resolve, reject) => {
